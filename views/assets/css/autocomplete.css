@@ -1,0 +1,38 @@
+body{
+    background-color: #E5E5E5;
+}
+.autocomplete {
+   
+    z-index: 1000;
+    overflow: auto;
+    box-sizing: border-box;
+    background-color: #E5E5E5;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d1d5db;
+    color: #111827;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    outline-offset: 2px;
+    border-color: #287AB8;
+    display: block;
+    width: 100%;
+    
+}
+
+
+.autocomplete > div {
+    padding: 0 4px;
+}
+
+.autocomplete .group {
+    background: #eee;
+}
+
+.autocomplete > div:hover:not(.group),
+.autocomplete > div.selected {
+    background: #287AB8;
+    cursor: pointer;
+    font-weight: bold;
+}
+

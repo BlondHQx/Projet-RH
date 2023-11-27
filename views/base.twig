@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" href="/css/output.css">
+		<link rel="stylesheet" href="/css/autocomplete.css">
+		<script src="https://kit.fontawesome.com/463c3f4f8a.js" crossorigin="anonymous"></script>
+		<script src="/js/autocomplete.js"></script>
+		
+	</head>
+	<body>
+		{% block header %} 
+			{% include "./layouts/_header.twig" %}
+		{% endblock %}
+        {% block main %}{% endblock %}
+        {% block footer %}{% endblock %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+		{% block script %}{% endblock %}
+		
+	</body>
+</html>
+

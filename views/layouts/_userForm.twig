@@ -1,0 +1,62 @@
+<div class="w-100 mx-auto px-6 sm:max-w-2xl md:max-w-3xl md:px-12 lg:max-w-5xl xl:max-w-7xl xl:px-32">
+	<div class="text-center">
+		<div class="block rounded-lg bg-[hsla(0,0%,100%,0.8)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  md:py-16 md:px-12" style="margin-top: 180px; backdrop-filter: saturate(200%) blur(25px);">
+			<div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+				<h2 class="mb-4 text-xl font-bold text-gray-900 ">
+					{% if user %}
+						Modifier les informations
+					{% else %}
+						Création de compte entreprise
+					{% endif %}
+				</h2>
+				<form method="POST" {% if user %} action="/updateCompany/{{user.id}}" {% else %} action="/signin" {% endif %}>
+					<div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+						<div class="sm:col-span-2">
+							<p class="text-red-500">{{errors.errors.name.message}}</p>
+							<label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nom de l'entreprise</label>
+							<input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " {% if user %} value="{{user.name}}" {% endif %} placeholder="Nom de l'entreprise" required="">
+						</div>
+						<div class="w-full">
+							<p class="text-red-500">{{errors.errors.siret.message}}</p>
+							<label for="siret" class="block mb-2 text-sm font-medium text-gray-900 ">Siret</label>
+							<input type="number" name="siret" id="siret" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " {% if user %} value="{{user.siret}}" {% endif %} placeholder="Siret" required="">
+						</div>
+						<div class="w-full">
+							<p class="text-red-500">{{errors.errors.ceoName.message}}</p>
+							<label for="ceoName" class="block mb-2 text-sm font-medium text-gray-900 ">Nom du président</label>
+							<input type="text" name="ceoName" id="ceoName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " {% if user %} value="{{user.ceoName}}" {% endif %} placeholder="Nom du président" required="">
+						</div>
+						<div class="w-full">
+							<p class="text-red-500">{{errors.errors.mail.message}}</p>
+							<p class="text-red-500">{{errors.errorMail}}</p>
+							<label for="mail" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
+							<input type="text" name="mail" id="mail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " {% if user %} value="{{user.mail}}" {% else %} required="" {% endif %} placeholder="@">
+						</div>
+						<div class="w-full">
+							<p class="text-red-500">{{errors.errors.password.message}}</p>
+							<label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Mot de passe</label>
+							<input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Mot de passe" required="">
+						</div>
+						<div class="w-full">
+							<p class="text-red-500">{{errors.errorConfirmPass}}</p>
+							<label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-900 ">Confirmer le mot de passe</label>
+							<input type="password" name="confirmPassword" id="confirmPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="Confirmer le mot de passe" required="">
+						</div>
+
+					</div>
+					<div class="flex items-center space-x-4">
+						<button type="submit" class=" mx-auto text-white bg-blue-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+							{% if user %}
+								Mettre à jour
+							{% else %}
+								Valider
+							{% endif %}
+						</button>
+
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

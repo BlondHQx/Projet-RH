@@ -1,0 +1,58 @@
+<div
+	class="container my-24 mx-auto md:px-6">
+	<!-- Section: Design Block -->
+	<section class="mb-32 text-center">
+		<h2 class="mb-32 text-3xl font-bold">
+			Liste de vos
+			<u class="text-primary ">
+				{% if filterFunction %}
+					{{filterFunction}}
+				{% else %}
+					employés
+				{% endif %}
+			</u>
+		</h2>
+		<div class="grid gap-x-6 gap-y-12 md:gap-y-24 md:grid-cols-3 lg:gap-x-12 ">
+
+			{% for employee in employees %}
+			
+			
+				<div class="mb-24 md:mb-0">
+					<div class="block h-full rounded-lg {% if employee.blames == 1 %} bg-amber-100 {% elseif employee.blames == 2 %} bg-red-100 {% else %} bg-zinc-50 {% endif %} shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+						<div class="flex justify-center">
+							<div class="flex justify-center -mt-[75px]">
+								<img src="/img/{% if employee.photo != "" %}uploads/{{employee.photo}}{% else %}user.png{% endif %} " class="mx-auto rounded-full shadow-lg  w-[150px]" alt="Avatar"/>
+							</div>
+						</div>
+						<div class="p-6">
+							<h5 class="mb-4 text-lg font-bold">{{employee.name}}</h5>
+							<p class="mb-6">{{employee.fonction}}
+							</p>
+							<p class="mb-6">Nombre de blames:
+								{{employee.blames}}
+							</p>
+							<ul class="mx-auto flex list-inside justify-center">
+								<li>
+									<a href="/updateEmployee/{{employee.id}}" class="px-2">
+										<i class="fa-solid fa-pen fa-xl" style="color: #2527eb;"></i>
+									</a>
+								</li>
+								<li>
+									<a href="/deleteEmployee/{{employee.id}}" class="px-2">
+										<i class="fa-solid fa-trash fa-xl" style="color: #b81919;"></i>
+									</a>
+								</li>
+								<li>
+									<a href="/blame/{{employee.id}}" class="px-2">
+										<i class="fa-solid fa-ban fa-xl" style="color: #2527eb;"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	<!-- Section: Design Block -->
+</div>
